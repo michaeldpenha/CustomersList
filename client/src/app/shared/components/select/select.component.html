@@ -1,0 +1,8 @@
+<div class="container" [formGroup]="group">
+  <div>{{field.label}}</div>
+  <select [formControlName]="field.name">
+      <ng-container *ngFor="let item of field.options">
+          <option [value]="item.key" [selected]="item.key === field.value">{{item.value}}</option>
+      </ng-container>
+  </select>
+</div>

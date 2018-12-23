@@ -1,0 +1,27 @@
+{
+  "name": "customers",
+  "version": "1.0.0",
+  "description": "Customers Operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "tsc && nodemon ./build/index.js",
+    "start": "tsc && node ./build/index.js",
+    "ts:watch": "tsc -w"
+  },
+  "author": "Michael Dpenha",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.9.4",
+    "typescript": "^3.0.3"
+  }
+}

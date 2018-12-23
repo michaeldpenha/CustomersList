@@ -1,0 +1,28 @@
+<ng-container>
+  <div class="container">
+    <app-search
+      [placeholder]="placeholder"
+      [buttonText]="buttonText"
+      (triggeSearch)="search($event)"
+    >
+    </app-search>
+  </div>
+  <div class="container">
+    <app-table-header [items]="coloumnConfig"></app-table-header>
+    <app-tupples [config]="coloumnConfig" [data]="customerData" (editData)="editRecord($event)"></app-tupples>
+    <ng-container *ngIf="customerData.length > 0">
+      <app-pagination
+        [page]="page"
+        (goPrev)="goPrev()"
+        (goNext)="goNext()"
+        (goPage)="goPage($event)"
+        (changeInPerPage)="changeInperPage($event)"
+        [count]="count"
+        [perPage]="perPage"
+        [pagesToShow]="pagesToShow"
+        [pageLimitArray]="pageLimitArray"
+      ></app-pagination>
+    </ng-container>
+  </div>
+</ng-container>
+<app-modal-form [openModal]="openModal" [fields]="fields" [data]="formData" (submit)="updateCustomerInfo($event)"></app-modal-form>

@@ -1,0 +1,4 @@
+<div>
+  <input [type]="search" [placeholder]="placeholder" #searchBox (keyup)="triggerSearch(searchBox.value)">
+  <button (click)="triggerSearch(searchBox.value)">{{buttonText}}</button>
+</div>

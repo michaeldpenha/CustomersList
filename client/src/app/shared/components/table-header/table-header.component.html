@@ -1,0 +1,12 @@
+<div class="container d-none d-sm-block">
+  <div class="row tableHeaderCls">
+    <ng-container *ngFor="let item of items">
+      <div [className]="populateClass(item)" (click)="triggerClick(item)">
+        {{ item.displayTitle }}
+        <ng-container *ngIf="item.enableSorting">
+            <app-icon-sort [icon]="sortIcon(item)"></app-icon-sort>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>

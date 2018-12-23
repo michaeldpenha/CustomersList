@@ -1,0 +1,9 @@
+<ng-container *ngFor="let item of data">
+  <div>
+    <div [className]="addTypeBg(item)">
+      <ng-container *ngFor="let cfg of config">
+        <div [className]="cfg.className"><span [className]="cfg.actionClass" (click)="actionClick(item,cfg)">{{populateValue(item,cfg)}}</span></div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

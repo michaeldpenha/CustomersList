@@ -1,0 +1,13 @@
+<div [formGroup]="group" class="input-group">
+  <input
+    [formControlName]="field.name"
+    [placeholder]="field.label"
+    [type]="field.inputType"
+    class="form-control"
+  />
+  <ng-container *ngFor="let validation of field.validations">
+    <div class="alert-danger" *ngIf="group.get(field.name).hasError(validation.name)">
+      {{ validation.message }}
+    </div>
+  </ng-container>
+</div>

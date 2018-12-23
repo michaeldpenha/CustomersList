@@ -1,0 +1,16 @@
+<div class="input-group" [formGroup]="group">
+  <input
+    [formControlName]="field.name"
+    [placeholder]="field.label"
+    [type]="field.inputType"
+    ngbDatepicker
+    #d="ngbDatepicker"
+  />
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-secondary calendar"
+      (click)="d.toggle()"
+      type="button"
+    ></button>
+  </div>
+</div>

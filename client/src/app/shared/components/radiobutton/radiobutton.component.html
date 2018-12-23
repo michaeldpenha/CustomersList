@@ -1,0 +1,8 @@
+<div class="demo-full-width margin-top" [formGroup]="group">
+  <label class="radio-label-padding">{{ field.label }}:</label>
+  <radiogroup [formControlName]="field.name">
+    <ng-container *ngFor="let item of field.options">
+        <radio [label]="item"></radio>
+    </ng-container>
+  </radiogroup>
+</div>
