@@ -118,5 +118,10 @@ export class HomeComponent implements OnInit {
     return refData[key] ? refData[key] : [];
   }
   public triggerSort = (col: Column) => {
+    /**
+     * (environment.serverSearch) based on this parameter we can do server side sort funcitonality
+     */
+    const data = this.customerData;
+    this.customerData = sortData(data, col['sortingDirection'] === 'asc' ? true : false, col['dataIndex']);
   }
 }
