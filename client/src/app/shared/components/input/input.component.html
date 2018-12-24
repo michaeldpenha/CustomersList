@@ -1,13 +1,22 @@
-<div [formGroup]="group" class="input-group">
-  <input
-    [formControlName]="field.name"
-    [placeholder]="field.label"
-    [type]="field.inputType"
-    class="form-control"
-  />
-  <ng-container *ngFor="let validation of field.validations">
-    <div class="alert-danger" *ngIf="group.get(field.name).hasError(validation.name)">
-      {{ validation.message }}
-    </div>
-  </ng-container>
+<div [formGroup]="group" class="form-group row">
+  <label aria-describedby="field.name" class="col-sm-2 col-form-label">{{
+    field.label
+  }}</label>
+  <div class="col-sm-10">
+    <input
+      [formControlName]="field.name"
+      [placeholder]="field.label"
+      [type]="field.inputType"
+      class="form-control"
+    />
+
+    <ng-container *ngFor="let validation of field.validations">
+      <div
+        class="alert-danger"
+        *ngIf="group.get(field.name).hasError(validation.name)"
+      >
+        {{ validation.message }}
+      </div>
+    </ng-container>
+  </div>
 </div>

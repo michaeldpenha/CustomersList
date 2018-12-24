@@ -43,7 +43,7 @@ export class TableHeaderComponent implements OnInit {
     const direction: string = col.sortingDirection.toLowerCase();
     if (dataIndexMatched && direction === 'asc') {
       result = 'fa fa-sort-asc';
-    } else if (dataIndexMatched && direction === 'asc') {
+    } else if (dataIndexMatched && direction === 'desc') {
       result = 'fa fa-sort-desc';
     } else {
       result = 'fa fa-sort';

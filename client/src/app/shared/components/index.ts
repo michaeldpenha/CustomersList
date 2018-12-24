@@ -7,3 +7,4 @@ export * from './icon-sort';
 export * from './modal';
 export * from './radiobutton';
 export * from './select';
+export * from './form';

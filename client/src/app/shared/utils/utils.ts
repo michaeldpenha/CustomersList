@@ -1,5 +1,6 @@
 import { DateConfig } from '../interface';
 import * as moment from 'moment';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 export const deepCopy = (parentObj: any): any => {
   let cloneObject = parentObj;
@@ -13,6 +14,8 @@ export const deepCopy = (parentObj: any): any => {
       }
     }
   }
+
+  return cloneObject;
 };
 
 export const sortData = (data: any, direction: boolean , fieldName?: string) => {
@@ -37,4 +40,8 @@ export const formatDatePicker = (date: Date): DateConfig => {
     month: Number(moment(date).format('MM')),
     day: Number(moment(date).format('DD')),
   };
+};
+
+export const dateObjectFromPickerObj = (obj: NgbDateStruct): Date => {
+  return new Date(`${obj.month}/${obj.day}/${obj.year}`);
 };

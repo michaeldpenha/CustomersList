@@ -13,7 +13,8 @@ import {
   PaginationComponent,
   TupplesComponent,
   TableHeaderComponent,
-  RadiobuttonComponent
+  RadiobuttonComponent,
+  FormComponent
 } from '../../shared/components';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -36,7 +37,8 @@ import { DynamicFieldDirective } from 'src/app/shared';
     InputComponent,
     SelectComponent,
     DateComponent,
-    RadiobuttonComponent
+    RadiobuttonComponent,
+    FormComponent
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HomeRoutingModule,
     NgbModule.forRoot()],
@@ -44,7 +46,8 @@ import { DynamicFieldDirective } from 'src/app/shared';
     InputComponent,
     SelectComponent,
     DateComponent,
-    RadiobuttonComponent
+    RadiobuttonComponent,
+    FormComponent
   ],
   providers: [HomeService],
   schemas: [NO_ERRORS_SCHEMA]

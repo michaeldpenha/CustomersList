@@ -1,18 +1,8 @@
 <app-modal id="form-modal" (modalClose)="modalClose($event)">
   <h1>{{ modalText }}</h1>
   <ng-container *ngIf="fields">
-    <form [formGroup]="form">
-      <div class="form-group">
-        <ng-container
-          *ngFor="let field of fields"
-          appDynamicField
-          [field]="field"
-          [group]="form"
-        >
-        </ng-container>
-      </div>
-    </form>
+    <app-form [form]="form" [fields]="fields"></app-form>
   </ng-container>
-  <button (click)="submitData($event)">Submit</button>
-  <button (click)="cancel($event)">Cancel</button>
+  <button class="btn btn-outline-primary" [disabled]="form && !form.valid" (click)="submitData($event)">Submit</button>
+  <button class="btn btn-outline-secondary marginLeft" (click)="closeModalInstance('form-modal')">Cancel</button>
 </app-modal>

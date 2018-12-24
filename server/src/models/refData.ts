@@ -39,10 +39,13 @@ interface ColoumnFields {
   action?: string;
   actionClass?: string;
 }
-
+interface SearchType{
+  name: string;
+}
 interface ReferenceData {
   CustomerForms: FormsFields[];
   Grid?: ColoumnFields[];
+  GlobalSearch?: SearchType[]; 
 }
 const calculateMaxDateYear = (years: number): Date => {
   const date = new Date();
@@ -63,6 +66,11 @@ const countryOptions: any[] = [
   }
 ];
 const RefData: ReferenceData = {
+  GlobalSearch: [{
+    name: 'name'
+  },{
+    name: 'country'
+  }],
   Grid: [
     {
       dataIndex: "name",
@@ -196,7 +204,19 @@ const RefData: ReferenceData = {
       required: true,
       disabled: true,
       maxDate: calculateMaxDateYear(2),
-      minDate: new Date()
+      minDate: new Date(),
+      validations: [
+        {
+          name: "required",
+          validator: "required",
+          message: "Contract Expiry Date required"
+        },
+        {
+          name: "expired",
+          validator: "dateExpired",
+          message: "Please choose a new Contract Expiry Date"
+        }
+      ]
     },
     {
       CustomerType: CustomersType["big"],
@@ -243,7 +263,19 @@ const RefData: ReferenceData = {
       disabled: true,
       label: "Contract Expiry Date",
       maxDate: calculateMaxDateYear(3),
-      minDate: new Date()
+      minDate: new Date(),
+      validations: [
+        {
+          name: "required",
+          validator: "required",
+          message: "Contract Expiry Date required"
+        },
+        {
+          name: "expired",
+          validator: "dateExpired",
+          message: "Please choose a new Contract Expiry Date"
+        }
+      ]
     },
     {
       CustomerType: CustomersType["big"],

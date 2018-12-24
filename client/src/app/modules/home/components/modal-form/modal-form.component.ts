@@ -48,7 +48,7 @@ export class ModalFormComponent implements OnInit, OnChanges {
     const group = this._fb.group({});
     this.fields.forEach(field => {
       const control = this._fb.control(
-        this.data[field.name] ? this.data[field.name] : field.value,
+        this.data[field.name] ? this.data[field.name] : field.value ? field.value : '',
         this._bindValidations(field.validations || [])
       );
 
@@ -62,8 +62,10 @@ export class ModalFormComponent implements OnInit, OnChanges {
     if (validations.length > 0) {
       const validList = [];
       validations.forEach(valid => {
-        valid.validator = CustomValidation[valid.validator];
-        validList.push(valid.validator);
+        if (CustomValidation[valid.validator]) {
+          valid.validator = CustomValidation[valid.validator];
+          validList.push(valid.validator);
+        }
       });
 
       return Validators.compose(validList);
@@ -92,6 +94,7 @@ export class ModalFormComponent implements OnInit, OnChanges {
   }
 
   public submitData = (e: any) => {
+    console.log('in');
    // this.validateAllFormFields(this.form);
   }
 }

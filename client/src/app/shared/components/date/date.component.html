@@ -1,16 +1,33 @@
-<div class="input-group" [formGroup]="group">
-  <input
-    [formControlName]="field.name"
-    [placeholder]="field.label"
-    [type]="field.inputType"
-    ngbDatepicker
-    #d="ngbDatepicker"
-  />
-  <div class="input-group-append">
+<div class="form-group row" [formGroup]="group">
+  <label aria-describedby="field.name" class="col-sm-2 col-form-label">{{
+    field.label
+  }}</label>
+  <div class="col-sm-10">
+    <input
+      [formControlName]="field.name"
+      [placeholder]="placeholder"
+      [type]="field.inputType"
+      ngbDatepicker
+      #d="ngbDatepicker"
+      [(ngModel)]="date"
+      [readonly]="readonly"
+      (dateSelect)="onDateSelection($event)"
+      (click)="d.toggle()"
+    />
     <button
-      class="btn btn-outline-secondary calendar"
+      class="fa fa-calendar"
       (click)="d.toggle()"
       type="button"
     ></button>
+    <ng-container *ngIf="isValueValid">
+        <div class="alert-danger">{{ defaultDate }} Date is expired</div>
+      </ng-container>
   </div>
 </div>
+
+<!-- 
+<ng-container *ngFor="let validation of field.validations">
+    <div class="alert-danger" *ngIf="group.get(field.name).hasError(validation.name)">
+      {{ validation.message }}
+    </div>
+</ng-container> -->

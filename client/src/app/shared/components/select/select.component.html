@@ -1,8 +1,23 @@
-<div class="container" [formGroup]="group">
-  <div>{{field.label}}</div>
-  <select [formControlName]="field.name">
+<div class="form-group row" [formGroup]="group">
+  <label aria-describedby="field.name" class="col-sm-2 col-form-label">{{
+    field.label
+  }}</label>
+  <div class="col-sm-10">
+    <select [formControlName]="field.name" class="form-control">
       <ng-container *ngFor="let item of field.options">
-          <option [value]="item.key" [selected]="item.key === field.value">{{item.value}}</option>
+        <option [value]="item.key" [selected]="item.key === field.value">{{
+          item.value
+        }}</option>
       </ng-container>
-  </select>
+    </select>
+
+    <ng-container *ngFor="let validation of field.validations">
+      <div
+        class="alert-danger"
+        *ngIf="group.get(field.name).hasError(validation.name)"
+      >
+        {{ validation.message }}
+      </div>
+    </ng-container>
+  </div>
 </div>

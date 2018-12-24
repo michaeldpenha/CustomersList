@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  serverHostUrl : 'http://localhost:8000/api/v1'
+  serverHostUrl : 'http://localhost:8000/api/v1',
+  serverPagination: false,
+  serverSearch: false
 };
 
 /*

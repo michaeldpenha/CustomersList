@@ -4,7 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from 'src/app/core/services';
 import { HomeService } from '../../services';
 import { Customer, Column, FieldConfig } from './../../../../shared';
-import { deepCopy, sortData, filterRecord } from './../../../../shared/utils/utils';
+import {
+  deepCopy,
+  sortData,
+  filterRecord
+} from './../../../../shared/utils/utils';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-home',
@@ -55,8 +60,7 @@ export class HomeComponent implements OnInit {
     this.count = this.customerData.length;
   }
   private _paintGrid = () => {
-    const refData = this._configService.refData;
-    const gridConfig = refData['Grid'] ? refData['Grid'] : [];
+    const gridConfig = this.fetchReferenceData('Grid');
 
     this.coloumnConfig = sortData(gridConfig, true, 'order');
   }
@@ -64,17 +68,55 @@ export class HomeComponent implements OnInit {
    * search
    */
   public search = (val: string) => {
-    console.log(val);
+    const refData = this.fetchReferenceData('GlobalSearch');
+
+    (environment.serverSearch) ? this.serverSideSearch(val, refData) : this.clientSideSearch(val, refData);
+
+  }
+  /**
+   * serverSideSearch
+   */
+  public serverSideSearch = (val: string, ref: any) => {
+    /**
+     * TODO : TO implement server side implementation
+     */
+  }
+  /**
+   * clientSideSearch
+   */
+  public clientSideSearch = (val: string, ref: any) => {
+    let data = this._componentService.customerData;
+
+    this.customerData = data.filter((item: any) => {
+        let available = false;
+        ref.forEach((search: any) => {
+          available = available || item[search['name']].toLowerCase().indexOf(val.toLowerCase()) > -1;
+        });
+        return available;
+    });
+
+    data = null;
   }
   public editRecord = (val: Customer) => {
-    const refData = this._configService.refData;
+    const refData = this.fetchReferenceData('CustomerForms');
 
-    this.fields = filterRecord(refData['CustomerForms'], 'CustomerType', val.type);
+    this.fields = filterRecord(
+      refData,
+      'CustomerType',
+      val.type
+    );
     this.formData = val;
     this.openModal = true;
   }
 
   public updateCustomerInfo = (formObj: any) => {
     console.log(formObj);
+  }
+
+  public fetchReferenceData = (key: string): any => {
+    const refData = this._configService.refData;
+    return refData[key] ? refData[key] : [];
+  }
+  public triggerSort = (col: Column) => {
   }
 }

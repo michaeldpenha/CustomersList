@@ -1,4 +1,19 @@
-<div>
-  <input [type]="search" [placeholder]="placeholder" #searchBox (keyup)="triggerSearch(searchBox.value)">
-  <button (click)="triggerSearch(searchBox.value)">{{buttonText}}</button>
+<div class="paddingDiv">
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <input
+        class="form-control"
+        [type]="search"
+        [placeholder]="placeholder"
+        #searchBox
+        (keyup)="triggerInputSearch(searchBox.value)"
+      />
+    </div>
+    <button
+      class="btn btn-outline-primary"
+      (click)="emitSearch(searchBox.value)"
+    >
+      {{ buttonText }}
+    </button>
+  </div>
 </div>
