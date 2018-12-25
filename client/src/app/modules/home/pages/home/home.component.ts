@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   perPage = 10;
   pagesToShow: number;
   pageLimitArray: any[];
-  fields: FieldConfig;
+  fields: FieldConfig[];
   formData: Customer;
   openModal = false;
   queryParams: any;
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     this._paintGrid();
     // this._fetchQueryParams();
     this._paintPagination();
-    this._popuplateCustomerInfo();
+    this.popuplateCustomerInfo();
   }
 
   private _fetchQueryParams = () => {
@@ -74,13 +74,13 @@ export class HomeComponent implements OnInit {
     this.pageLimitArray = [5, 10, 20, 50];
   }
 
-  private _popuplateCustomerInfo = () => {
+  public popuplateCustomerInfo = () => {
     this._componentService
       .fetchCustomerInfo()
-      .subscribe(() => this._populateCustomersData());
+      .subscribe(() => this.populateCustomersData());
   }
 
-  private _populateCustomersData = () => {
+  public populateCustomersData = () => {
     const data = deepCopy(this._componentService.customerData);
     // const page = this.page === 1 ? 0 : this.page;
     // const startIndex = page * this.perPage;
@@ -149,12 +149,12 @@ export class HomeComponent implements OnInit {
     //   search : this.searchVal,
     //   sortIndex : this.sortIndex
     // });
-    this._popuplateCustomerInfo();
+    this.popuplateCustomerInfo();
   }
 
   public fetchReferenceData = (key: string): any => {
     const refData = this._configService.refData;
-    return refData[key] ? refData[key] : [];
+    return refData && refData[key] ? refData[key] : [];
   }
   public triggerSort = (col: Column) => {
     /**
