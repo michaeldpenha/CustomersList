@@ -21,7 +21,7 @@ export class TupplesComponent implements OnInit {
    *
    * populateValue(item,cfg)
    * */
-  public populateValue = (item: any[], cfg: any[]): string => {
+  public populateValue = (item: any, cfg: any): string => {
     let result: string;
     const val: any = item[cfg['dataIndex']];
     if (cfg['indexType'] === 'date') {
@@ -38,7 +38,7 @@ export class TupplesComponent implements OnInit {
   /**
    * addTypeBg
    */
-  public addTypeBg = (item: any[]): string => {
+  public addTypeBg = (item: any): string => {
     return `row tupple_bg_${item['type']}`;
   }
   /**
