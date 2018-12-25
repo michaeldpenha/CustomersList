@@ -2,7 +2,7 @@
  * Here we can define schema
  */
 
-interface CustomerSchema {
+export interface CustomerSchema {
   id?: String;
   type: Number;
   name: String;
