@@ -110,7 +110,8 @@ export class HomeComponent implements OnInit {
   }
 
   public updateCustomerInfo = (formObj: any) => {
-    console.log(formObj);
+    this.customerData = [];
+    this._popuplateCustomerInfo();
   }
 
   public fetchReferenceData = (key: string): any => {

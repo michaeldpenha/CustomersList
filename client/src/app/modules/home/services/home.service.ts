@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
@@ -25,5 +25,11 @@ export class HomeService {
     return this._http
       .get<Customer[]>(`${environment.serverHostUrl}/customers`)
       .pipe(map((res: any) => this.customerData = res['data']));
+  }
+
+  public updateCustomerInfo = (data: Customer) => {
+    return this._http
+               .put(`${environment.serverHostUrl}/customers`, JSON.stringify(data))
+               .pipe(map((res: any) => console.log(res)));
   }
 }

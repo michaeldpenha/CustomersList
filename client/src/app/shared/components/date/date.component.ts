@@ -41,7 +41,7 @@ export class DateComponent implements OnInit {
     const minDate = moment(this.field.minDate);
     const diff = moment.duration(valueDate.diff(minDate));
 
-    this.isValueValid = diff.asDays() < 0;
+    this.isValueValid = diff.asDays() <= 0;
     if (this.isValueValid) {
       this.date = null;
     }

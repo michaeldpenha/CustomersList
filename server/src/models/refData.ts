@@ -143,6 +143,28 @@ const RefData: ReferenceData = {
     {
       CustomerType: CustomersType["small"],
       type: "input",
+      name: "id",
+      inputType: "hidden"
+    },{
+      CustomerType: CustomersType["big"],
+      type: "input",
+      name: "id",
+      inputType:"hidden"
+    },
+    {
+      CustomerType: CustomersType["small"],
+      type: "input",
+      name: "type",
+      inputType: "hidden"
+    },{
+      CustomerType: CustomersType["big"],
+      type: "input",
+      name: "type",
+      inputType:"hidden"
+    },
+    {
+      CustomerType: CustomersType["small"],
+      type: "input",
       name: "name",
       label: "Name",
       required: true,

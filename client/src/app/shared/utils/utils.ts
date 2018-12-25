@@ -42,6 +42,6 @@ export const formatDatePicker = (date: Date): DateConfig => {
   };
 };
 
-export const dateObjectFromPickerObj = (obj: NgbDateStruct): Date => {
+export const dateObjectFromPickerObj = (obj: any): Date => {
   return new Date(`${obj.month}/${obj.day}/${obj.year}`);
 };

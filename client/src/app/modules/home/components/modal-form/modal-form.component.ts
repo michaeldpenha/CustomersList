@@ -1,3 +1,4 @@
+import { HomeService } from './../../services/home.service';
 import { ModalService } from './../../../../shared/components/modal/modal.service';
 import {
   FormGroup,
@@ -17,6 +18,7 @@ import {
 
 import { Customer, FieldConfig } from './../../../../shared/interface';
 import { CustomValidation } from 'src/app/shared/utils/validators';
+import { dateObjectFromPickerObj } from 'src/app/shared/utils/utils';
 
 @Component({
   selector: 'app-modal-form',
@@ -27,11 +29,11 @@ export class ModalFormComponent implements OnInit, OnChanges {
   @Input() fields: FieldConfig[];
   @Input() data: Customer[];
   @Input() openModal: true;
-  @Output() submit = new EventEmitter<any>();
+  @Output() fetchCustomerData = new EventEmitter<any>();
   form: FormGroup;
   modalText = 'Edit Customer';
 
-  constructor(private _fb: FormBuilder, private _modalService: ModalService) {}
+  constructor(private _fb: FormBuilder, private _modalService: ModalService, private _homeService: HomeService) {}
 
   ngOnInit() {}
   /**
@@ -94,7 +96,11 @@ export class ModalFormComponent implements OnInit, OnChanges {
   }
 
   public submitData = (e: any) => {
-    console.log('in');
-   // this.validateAllFormFields(this.form);
+    const values: Customer = this.form.value;
+    values.contractExpiryDate = dateObjectFromPickerObj(values.contractExpiryDate).toISOString();
+    this._homeService.updateCustomerInfo(this.form.value).subscribe((res: any) => {
+      this._modalService.close('form-modal');
+      this.fetchCustomerData.emit(true);
+    });
   }
 }
