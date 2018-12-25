@@ -7,5 +7,5 @@ export interface Customer {
   numberOfEmployees?: Number;
   contractExpiryDate?: String;
   annualTurnover?: Number;
-  complianceChecked?: Boolean;
+  complianceChecked?: boolean;
 }

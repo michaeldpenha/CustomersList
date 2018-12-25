@@ -326,12 +326,12 @@ const RefData: ReferenceData = {
       required: true,
       options: [
         {
-          key: "true",
-          value: "True"
+          displayValue: "true",
+          value: "true"
         },
         {
-          key: "false",
-          value: "False"
+          displayValue: "false",
+          value: "false"
         }
       ],
       validations: [

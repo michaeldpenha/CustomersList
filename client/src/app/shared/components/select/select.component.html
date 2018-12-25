@@ -5,7 +5,7 @@
   <div class="col-sm-10">
     <select [formControlName]="field.name" class="form-control">
       <ng-container *ngFor="let item of field.options">
-        <option [value]="item.key" [selected]="item.key === field.value">{{
+        <option [value]="item.value" [selected]="selected(item, field)">{{
           item.value
         }}</option>
       </ng-container>

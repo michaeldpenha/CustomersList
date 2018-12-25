@@ -10,6 +10,12 @@ import { FormGroup } from '@angular/forms';
 export class SelectComponent implements OnInit {
   field: FieldConfig;
   group: any;
+  value: string;
   constructor() {}
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  public selected (item: any , field: FieldConfig) {
+    return item.value === String(this.group.get(field.name).value);
+  }
 }

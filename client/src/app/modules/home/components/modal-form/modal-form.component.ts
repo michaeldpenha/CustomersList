@@ -50,7 +50,7 @@ export class ModalFormComponent implements OnInit, OnChanges {
     const group = this._fb.group({});
     this.fields.forEach(field => {
       const control = this._fb.control(
-        this.data[field.name] ? this.data[field.name] : field.value ? field.value : '',
+        this.data[field.name] !== undefined ? this.data[field.name] : field.value !== undefined ? field.value : '',
         this._bindValidations(field.validations || [])
       );
 

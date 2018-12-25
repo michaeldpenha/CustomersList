@@ -9,7 +9,7 @@ export const deepCopy = (parentObj: any): any => {
     cloneObject =
       Object.prototype.toString.call(parentObj) === '[object Array]' ? [] : {};
     for (const i in parentObj) {
-      if (parentObj[i]) {
+      if (parentObj[i] !== undefined) {
         cloneObject[i] = deepCopy(parentObj[i]);
       }
     }

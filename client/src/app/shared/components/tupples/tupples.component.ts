@@ -30,7 +30,7 @@ export class TupplesComponent implements OnInit {
     } else if (cfg['dataIndex'] === 'action') {
       result = '';
     } else {
-      result = val ? val : 'NA';
+      result = val !== undefined ? val : 'NA';
     }
 
     return result;
