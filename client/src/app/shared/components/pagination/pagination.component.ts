@@ -139,20 +139,6 @@ export class PaginationComponent implements OnInit, OnChanges {
     pages.sort((a, b) => a - b);
     return pages;
   }
-
-  /**
-   * listClick
-   */
-  listClick(newValue) {
-    this.selectedItem = newValue;
-    sessionStorage.setItem('selected', newValue);
-  }
-  /**
-   * managePagination
-   */
-  public managePagination() {
-    this.selectedItem = this.page;
-  }
   /**
    * defaultValueSelection
    */

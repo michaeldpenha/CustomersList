@@ -24,7 +24,7 @@
         <li class="page-item">
           <button
             class="page-link btn btn-sm"
-            (click)="onPrev(); listClick(page)"
+            (click)="onPrev();"
             [disabled]="firstPage()"
           >
             <i class="fa fa-caret-left"></i> Previous
@@ -37,7 +37,7 @@
         >
           <button
             class="page-link btn btn-sm"
-            (click)="onPage(pageNum); listClick(pageNum)"
+            (click)="onPage(pageNum);"
           >
             {{ pageNum }}
           </button>
@@ -45,7 +45,7 @@
         <li class="page-item">
           <button
             class="page-link btn btn-sm"
-            (click)="onNext(); listClick(page)"
+            (click)="onNext();"
             [disabled]="lastPage()"
           >
             Next <i class="fa fa-caret-right"></i>
