@@ -1,6 +1,10 @@
+import { DynamicFieldDirective } from 'src/app/shared';
+import { ModalComponent } from './../../../../shared/components/modal/modal.component';
+import { FormComponent } from './../../../../shared/components/form/form.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { ModalFormComponent } from './modal-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('ModalFormComponent', () => {
   let component: ModalFormComponent;
@@ -8,7 +12,9 @@ describe('ModalFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalFormComponent ]
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+      declarations: [ ModalFormComponent, FormComponent, ModalComponent, DynamicFieldDirective ],
+      providers: [HttpClient, HttpHandler]
     })
     .compileComponents();
   }));
